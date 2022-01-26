@@ -46,7 +46,7 @@ export default function RecipeReviewCard({
   return (
     <div className="wrapper">
       <Card sx={{ Width: 700, mb: 8 }} className="card">
-        <div className="flex">
+        <div className="flex_header">
           <CardHeader
             avatar={
               <Avatar
@@ -93,35 +93,38 @@ export default function RecipeReviewCard({
             </Typography>
           )}
         </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <StarBorderRoundedIcon />
-          </IconButton>
-          <Typography
-            variant="h7"
-            sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-          >
-            {stars} Stars
-          </Typography>
-          <IconButton aria-label="share">
-            <AdjustRoundedIcon />
-          </IconButton>
-          {`${issues}` <= 1 ? (
+        <CardActions className="flex_footer">
+          <div>
+            <IconButton aria-label="add to favorites">
+              <StarBorderRoundedIcon />
+            </IconButton>
             <Typography
               variant="h7"
               sx={{ fontWeight: "Medium", letterSpacing: 2 }}
             >
-              {issues} Issue
+              {stars} Stars
             </Typography>
-          ) : (
-            <Typography
-              variant="h7"
-              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-            >
-              {issues} Issues
-            </Typography>
-          )}
-
+          </div>
+          <div>
+            <IconButton aria-label="share">
+              <AdjustRoundedIcon />
+            </IconButton>
+            {`${issues}` <= 1 ? (
+              <Typography
+                variant="h7"
+                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              >
+                {issues} Issue
+              </Typography>
+            ) : (
+              <Typography
+                variant="h7"
+                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              >
+                {issues} Issues
+              </Typography>
+            )}
+          </div>
           <Typography
             variant="h8"
             sx={{ fontWeight: "Medium", letterSpacing: 2 }}
