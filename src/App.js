@@ -3,7 +3,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { url } from "./api/ApiLink";
 import useFetch from "./api/useFetch";
-import axios from "axios";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import Header from "./components/header/Header";
@@ -17,11 +16,11 @@ function App() {
 
   useEffect(() => {
     if (!result.response) {
-      console.log(result.error);
+      console.log("error");
     } else {
       setItems(result.response.items);
     }
-  }, [result]);
+  }, [result.response]);
 
   const fetchNextPage = async () => {
     const res = await fetch(`${url}&page=${page}`);
@@ -30,15 +29,14 @@ function App() {
   };
 
   const fetchData = async () => {
-    const reposFormServer = await fetchNextPage();
-    setItems([...items, ...reposFormServer]);
+    const reposFromServer = await fetchNextPage();
+    setItems([...items, ...reposFromServer]);
     if (page === 34) {
       setHasMore(false);
     } else {
       setHasMore(true);
       setPage(page + 1);
     }
-
     // console.log(`The page number ${page} is currently loaded`);
   };
 
@@ -82,12 +80,3 @@ function App() {
 }
 
 export default App;
-
-// const getFirstpage = async () => {
-//   const res = await axios.get(url);
-//   const data = await res.data;
-//   setItems(data.items);
-// };
-// getFirstpage();
-
-// setItems(data.items);
