@@ -43,9 +43,10 @@ export default function RecipeReviewCard({
   const day = full_date.getDate();
   const month = full_date.getMonth();
   const year = full_date.getFullYear();
+
   return (
     <div className="wrapper">
-      <Card sx={{ Width: 700, mb: 8 }} className="card">
+      <Card sx={{ height: "auto", Width: 500, mb: 8 }} className="card">
         <div className="flex_header">
           <CardHeader
             avatar={
@@ -57,13 +58,26 @@ export default function RecipeReviewCard({
             }
           />
           <div>
-            <Typography variant="h5" color="text.secondary">
+            <Typography
+              variant="h5"
+              color="text.secondary"
+              fontSize={{
+                md: 35,
+                sm: 23,
+                xs: 12,
+              }}
+            >
               {username}
             </Typography>
             <Typography
               variant="h4"
               color="text.primary"
               sx={{ fontWeight: "Medium" }}
+              fontSize={{
+                md: 40,
+                sm: 25,
+                xs: 14,
+              }}
             >
               {reponame}
             </Typography>
@@ -93,55 +107,55 @@ export default function RecipeReviewCard({
             </Typography>
           )}
         </CardContent>
-        <CardActions className="flex_footer">
-          <div>
-            <IconButton aria-label="add to favorites">
-              <StarBorderRoundedIcon />
-            </IconButton>
+        <div className="flex_footer">
+          <IconButton>
+            <StarBorderRoundedIcon />
+          </IconButton>
+          <Typography
+            variant="h7"
+            sx={{ fontWeight: "Medium", letterSpacing: 2, mb: 0 }}
+          >
+            {stars} Stars
+          </Typography>
+
+          <IconButton>
+            <AdjustRoundedIcon />
+          </IconButton>
+          {`${issues}` <= 1 ? (
             <Typography
               variant="h7"
               sx={{ fontWeight: "Medium", letterSpacing: 2 }}
             >
-              {stars} Stars
+              {issues} Issue
             </Typography>
-          </div>
-          <div>
-            <IconButton aria-label="share">
-              <AdjustRoundedIcon />
-            </IconButton>
-            {`${issues}` <= 1 ? (
-              <Typography
-                variant="h7"
-                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-              >
-                {issues} Issue
-              </Typography>
-            ) : (
-              <Typography
-                variant="h7"
-                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-              >
-                {issues} Issues
-              </Typography>
-            )}
-          </div>
+          ) : (
+            <Typography
+              variant="h7"
+              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+            >
+              {issues} Issues
+            </Typography>
+          )}
+
           <Typography
             variant="h8"
             sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-            ml={"auto"}
           >
-            Created at : {day}/{month + 1}/{year}
+            Created at :
           </Typography>
-
+          <Typography>
+            {day}/{month + 1}/{year}
+          </Typography>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
+            sx={{ Width: "10" }}
           >
             <ExpandMoreIcon />
           </ExpandMore>
-        </CardActions>
+        </div>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent className="wrapper">
             <Typography sx={{ fontWeight: "700", letterSpacing: 2 }}>

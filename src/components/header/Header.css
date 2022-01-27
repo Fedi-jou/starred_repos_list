@@ -9,7 +9,7 @@
 }
 @media (max-width: 770px) {
   .header_pos {
-    height: 15vh;
+    height: 12vh;
     display: flex;
     justify-content: center;
     align-items: center;

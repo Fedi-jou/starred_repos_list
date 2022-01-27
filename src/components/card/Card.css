@@ -1,7 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .card {
@@ -10,20 +11,35 @@
   border-radius: 5px !important;
   border-right: 1px solid black;
   box-shadow: 6px 3px 10px -1px rgba(145, 95, 95, 0.84) !important;
+  padding: 0.5rem;
+  width: 70vw;
 }
-@media screen and (max-width: 740px) {
+@media (max-width: 330px) {
   .card {
-    background-image: red !important;
+    padding: 1rem;
   }
 }
-
 .flex_header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-
+@media (max-width: 770px) {
+  .flex_header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 .flex_footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 770px) {
+  .flex_footer {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
