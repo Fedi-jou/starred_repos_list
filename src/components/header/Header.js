@@ -11,6 +11,11 @@ export default function Header() {
           fontFamily: "Libre Baskerville",
           fontWeight: "700",
           textAlign: "center",
+          fontSize: {
+            md: 50,
+            sm: 35,
+            xs: 20,
+          },
         }}
         mb={8}
         mt={0}

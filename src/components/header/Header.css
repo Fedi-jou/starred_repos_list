@@ -7,3 +7,11 @@
   background-image: linear-gradient(315deg, #89d8d3 50%, #03c8a8 74%);
   opacity: 0.9;
 }
+@media (max-width: 770px) {
+  .header_pos {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
