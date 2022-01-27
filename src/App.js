@@ -1,6 +1,8 @@
 import Card from "./components/card/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
+import { url } from "./api/ApiLink";
+import FetchApi from "./api/FetchApi";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -11,21 +13,23 @@ function App() {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
-  useEffect(() => {
-    const getFirstpage = async () => {
-      const res = await axios.get(
-        `https://api.github.com/search/repositories?q=created:%3E2017-10-22&sort=stars&order=desc`
-      );
-      const data = await res.data;
-      setItems(data.items);
-    };
-    getFirstpage();
-  }, []);
+  // useEffect(() => {
+  //   const getFirstpage = async () => {
+  //     const res = await axios.get(url);
+  //     const data = await res.data;
+  //     setItems(data.items);
+  //   };
+  //   getFirstpage();
+
+  //   setItems(data.items);
+  // }, []);
+  const data = FetchApi(url);
+  {
+    data && console.log(data.items);
+  }
 
   const fetchNextPage = async () => {
-    const res = await fetch(
-      `https://api.github.com/search/repositories?q=created:%3E2017-10-22&sort=stars&order=desc&page=${page}`
-    );
+    const res = await fetch(`${url}&page=${page}`);
     const data = await res.json();
     return data.items;
   };
