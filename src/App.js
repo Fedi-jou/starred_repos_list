@@ -2,7 +2,7 @@ import Card from "./components/card/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { url } from "./api/ApiLink";
-import FetchApi from "./api/FetchApi";
+import useFetch from "./api/FetchApi";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -23,10 +23,9 @@ function App() {
 
   //   setItems(data.items);
   // }, []);
-  const data = FetchApi(url);
-  {
-    data && console.log(data.items);
-  }
+  const data = useFetch(url);
+  setItems(data);
+  data && console.log(data.items);
 
   const fetchNextPage = async () => {
     const res = await fetch(`${url}&page=${page}`);
