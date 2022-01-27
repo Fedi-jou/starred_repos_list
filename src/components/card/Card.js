@@ -19,7 +19,7 @@ const ExpandMore = styled((props) => {
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
+  // marginLeft: "auto",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
@@ -108,50 +108,51 @@ export default function RecipeReviewCard({
           )}
         </CardContent>
         <div className="flex_footer">
-          <IconButton>
-            <StarBorderRoundedIcon />
-          </IconButton>
-          <Typography
-            variant="h7"
-            sx={{ fontWeight: "Medium", letterSpacing: 2, mb: 0 }}
-          >
-            {stars} Stars
-          </Typography>
-
-          <IconButton>
-            <AdjustRoundedIcon />
-          </IconButton>
-          {`${issues}` <= 1 ? (
+          <div>
+            <IconButton>
+              <StarBorderRoundedIcon />
+            </IconButton>
             <Typography
               variant="h7"
-              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              sx={{ fontWeight: "Medium", letterSpacing: 2, mb: 0 }}
             >
-              {issues} Issue
+              {stars} Stars
             </Typography>
-          ) : (
-            <Typography
-              variant="h7"
-              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-            >
-              {issues} Issues
-            </Typography>
-          )}
+          </div>
+          <div>
+            <IconButton>
+              <AdjustRoundedIcon />
+            </IconButton>
+            {`${issues}` <= 1 ? (
+              <Typography
+                variant="h7"
+                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              >
+                {issues} Issue
+              </Typography>
+            ) : (
+              <Typography
+                variant="h7"
+                sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              >
+                {issues} Issues
+              </Typography>
+            )}
+          </div>
 
-          <Typography
-            variant="h8"
-            sx={{ fontWeight: "Medium", letterSpacing: 2 }}
-          >
-            Created at :
-          </Typography>
-          <Typography>
-            {day}/{month + 1}/{year}
-          </Typography>
+          <div>
+            <Typography
+              variant="h8"
+              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+            >
+              Created at : {day}/{month + 1}/{year}
+            </Typography>
+          </div>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
-            sx={{ Width: "10" }}
           >
             <ExpandMoreIcon />
           </ExpandMore>
