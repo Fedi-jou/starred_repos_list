@@ -17,11 +17,11 @@ function App() {
 
   useEffect(() => {
     if (!result.response) {
-      console.log("Fetching..");
+      console.log(result.error);
     } else {
       setItems(result.response.items);
     }
-  }, []);
+  }, [result]);
 
   const fetchNextPage = async () => {
     const res = await fetch(`${url}&page=${page}`);
