@@ -12,15 +12,12 @@ function App() {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
 
-  const result = useFetch(url);
-
+  const { response } = useFetch(url);
   useEffect(() => {
-    if (!result.response) {
-      console.log("error");
-    } else {
-      setItems(result.response.items);
-    }
-  }, [result.response]);
+    response && setItems(response.items);
+  }, [response]);
+
+  console.log(items);
 
   const fetchNextPage = async () => {
     const res = await fetch(`${url}&page=${page}`);
@@ -37,7 +34,6 @@ function App() {
       setHasMore(true);
       setPage(page + 1);
     }
-    // console.log(`The page number ${page} is currently loaded`);
   };
 
   return (
@@ -45,7 +41,7 @@ function App() {
       <Header />
       <InfiniteScroll
         dataLength={items.length} //This is important field to render the next data
-        next={fetchData}
+        next={fetchData} // change name
         hasMore={hasMore}
         loader={
           <Box sx={{ width: "100%" }}>
