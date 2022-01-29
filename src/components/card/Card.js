@@ -90,12 +90,20 @@ export default function RecipeReviewCard({
             sx={{ fontFamily: "Monospace" }}
             color="text.secondary"
             variant="h6"
+            fontSize={{
+              md: 25,
+              sm: 20,
+              xs: 17,
+            }}
           >
             Description :
           </Typography>
 
           {`${description}` === "null" ? (
-            <Typography variant="h7">
+            <Typography
+              variant="h7"
+              sx={{ fontFamily: "Source Code Pro", fontWeight: "500" }}
+            >
               Sorry... No Description is available.
             </Typography>
           ) : (
