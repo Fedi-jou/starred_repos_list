@@ -122,7 +122,7 @@ export default function RecipeReviewCard({
             </IconButton>
             <Typography
               variant="h7"
-              sx={{ fontWeight: "Medium", letterSpacing: 2, mb: 0 }}
+              sx={{ fontWeight: "Medium", letterSpacing: 2 }}
             >
               {stars} Stars
             </Typography>
@@ -152,6 +152,11 @@ export default function RecipeReviewCard({
             <Typography
               variant="h8"
               sx={{ fontWeight: "Medium", letterSpacing: 2 }}
+              fontSize={{
+                md: 18,
+                sm: 15,
+                xs: 12,
+              }}
             >
               Created at : {day}/{month + 1}/{year}
             </Typography>
