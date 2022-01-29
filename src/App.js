@@ -13,11 +13,10 @@ function App() {
   const [page, setPage] = useState(2);
 
   const { response } = useFetch(url);
+
   useEffect(() => {
     response && setItems(response.items);
   }, [response]);
-
-  console.log(items);
 
   const fetchNextPage = async () => {
     const res = await fetch(`${url}&page=${page}`);
