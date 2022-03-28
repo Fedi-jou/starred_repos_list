@@ -2,6 +2,12 @@
 * https://github.com/gemography/frontend-coding-challenge
 
 
+## Main packages used : 
+1. Material Ui 
+2. Axios 
+3. react-infinite-scroll-component
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
